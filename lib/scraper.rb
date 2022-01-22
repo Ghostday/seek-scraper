@@ -12,7 +12,7 @@ class Scraper
         puts articles.count
         
         articles.each do |article|
-            job_title = article.at_css("h1").text
+            job_title = article.at_css("h3").text
             job_location = article.at_css("strong").css("a").text
             job_company = article.at_css("a[data-automation='jobCompany']") ? article.at_css("a[data-automation='jobCompany']").text : "Private"
             job_link = "https://www.seek.com.au#{article.at_css("a[data-automation='jobTitle']")['href']}"
