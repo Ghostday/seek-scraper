@@ -25,14 +25,14 @@ if command == "start"
         puts "What location are you looking in?"
         search_location = gets.chomp.to_s
 
-        Scraper.new(search_term.gsub(" ", "-"), search_location.gsub(" ", "-"))
+        Scraper.scrape_jobs(search_term.gsub(" ", "-"), search_location.gsub(" ", "-"))
         Job.list_titles   
         
         options
         option = gets.chomp.to_s
         while option != "quit"
             if option == "more"
-                Scraper.new(search_term.gsub(" ", "-"), search_location.gsub(" ", "-"), page += 1)
+                Scraper.scrape_jobs(search_term.gsub(" ", "-"), search_location.gsub(" ", "-"), page += 1)
                 Job.list_titles
             elsif option == "export"
                 puts "What filename would you like to export to? (Example: 'data' would export as data.csv)"

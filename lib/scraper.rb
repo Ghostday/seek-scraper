@@ -2,7 +2,7 @@ class Scraper
 
     @@job_array = []
 
-    def initialize(job, location, page=1)
+    def self.scrape_jobs(job, location, page=1)
         url = "https://www.seek.com.au/#{job}-jobs/in-#{location}?page=#{page}"
         puts "fetching from #{url}"
         page = HTTParty.get(url)
